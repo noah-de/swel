@@ -55,7 +55,6 @@ SWHmid = zeros(size(Emid, 1),length(Pmid)); % set aside space for this data set
 for i = 1:length(Pmid)
     ii = find(Pf>P(i)&Pf<=P(i+1));
     SWHmid(:,i) = 4*sqrt(sum(df(:,ii).*Emid(:,ii),2)); % !!
-    % Why 4 * sqrt??? Where is this formula? Where is it?
 end
 
 % plot
@@ -63,7 +62,8 @@ w = colormap(jet(length(Pmid)));
 set(groot,'defaultAxesColorOrder',w);
 plot(flip(SWH(1:60))*3.28,'k','LineWidth',3)
 hold on
-plot(flip(SWHmid(1:60,:))*3.28,'LineWidth',2)
+plot(flip(SWHmid(1:60,:))*3.28,'LineWidth',1.2)
 legend('Total','<5s','6s','8s','10s','12s','14s','16s','18s','20s','>20s','location','eastoutside')
 set(gca,'FontSize',14)
 ylabel('Significant Wave Height (ft)')
+xlabel('Hours')
