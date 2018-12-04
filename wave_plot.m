@@ -51,9 +51,9 @@ SWH = 4*sqrt(sum(df.*Emid,2)); % .* takes two arrays and returns a 3rd array (of
 P = [0,5,7,9,11,13,15,17,19,21,35];%25];%[5.5,6.5,7.5,8.5,9.5,10.5,11.5,13,15,19,22];
 Pmid = .5*(P(1:end-1)+P(2:end)); % calculating the mid-points for each period (makes the plots nicer)
 Pf = 1./fmid(1,:); % shift the focus from frequencies to periods
-SWHmid = zeros(size(Emid, 1),length(Pmid)); % set aside space for this data set
+SWHmid = zeros(size(df, 1),length(Pmid)); % set aside space for this data set
 for i = 1:length(Pmid)
-    ii = find(Pf>P(i)&Pf<=P(i+1));
+    ii = find(Pf>P(i) & Pf<=P(i+1));
     SWHmid(:,i) = 4*sqrt(sum(df(:,ii).*Emid(:,ii),2)); % !!
 end
 
