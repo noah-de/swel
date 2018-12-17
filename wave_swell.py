@@ -1,12 +1,6 @@
 import numpy as np
 from urllib.request import urlretrieve
 
-# the address to the buoy data (should pass in as argument)
-# 46053 = E. Santa Barbara
-# 46054 = W. Santa Barbara
-# 46217 = Anacapa Passage
-# 46086 = San Clemente Basin
-# 46219 = San Nicolas Island
 buoys = [
         46053, # E. Santa Barbara
         46054, # W. Santa Barbara
@@ -28,7 +22,7 @@ def get_buoy_data(station = 46054):
     print('dest:',dest)
     return dest
 
-dest = get_buoy_data(46054)
+dest = get_buoy_data(46053)
 
 dates = []
 energies = []
