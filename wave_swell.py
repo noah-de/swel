@@ -7,13 +7,28 @@ from urllib.request import urlretrieve
 # 46217 = Anacapa Passage
 # 46086 = San Clemente Basin
 # 46219 = San Nicolas Island
+buoys = [
+        46053, # E. Santa Barbara
+        46054, # W. Santa Barbara
+        46217, # Anacapa Passage
+        46086, # San Clemente Basin
+        46219, # San Nicolas Island
+        ]
 
-filename = '46054' # the buoy name
-url = 'https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec'.format(filename)
-dest = './{}.data_spec'.format(filename)
-urlretrieve(url, dest)
+def calc_midpoint(series):
+    nofirst = series[:,1:]       # every element in a row, except for the first
+    nolast  = series[:,:-1]      # every element in a row, except for the last
+    mid = .5 * (nolast + nofirst)
+    return mid
 
-dest = './{}.data_spec'.format(filename)
+def get_buoy_data(station = 46054):
+    url = 'https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec'.format(station)
+    dest = './{}.data_spec'.format(station)
+    urlretrieve(url, dest)
+    print('dest:',dest)
+    return dest
+
+dest = get_buoy_data(46054)
 
 dates = []
 energies = []
@@ -46,12 +61,10 @@ f = np.array(frequencies) # f for 'frequency'
 df = np.diff(f)
 
 # calculate the energy mid-point
-notfirst = E[:,1:]       # every element in a row, except for the first
-notlast  = E[:,:-1]      # every element in a row, except for the last
-Emid = .5 * (notlast + notfirst)
+Emid = calc_midpoint(E)
 
 # calculate the frequency mid-point
-fmid = .5*(f[:,:-1] + f[:,1:])
+fmid = calc_midpoint(f) # .5*(f[:,:-1] + f[:,1:])
 
 # significant wave height
 product = (df*Emid)
