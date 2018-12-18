@@ -1,14 +1,6 @@
 import numpy as np
 from urllib.request import urlretrieve
 
-buoys = [
-        46053, # E. Santa Barbara
-        46054, # W. Santa Barbara
-        46217, # Anacapa Passage
-        46086, # San Clemente Basin
-        46219, # San Nicolas Island
-        ]
-
 def calc_midpoint(series):
     nofirst = series[:,1:]       # every element in a row, except for the first
     nolast  = series[:,:-1]      # every element in a row, except for the last
@@ -31,6 +23,7 @@ def read_data(dest):
             next(fp)
 
         for l in fp:
+            # not using dates in matlab code, but it may be helpful here
             dates.append(l.split()[0:5])
 
             # [E] get wave energy data as E (meters squared per second)
@@ -62,12 +55,43 @@ def calc_swh(E,f):
     product = (df*Emid)
     return 4*np.sqrt(product.sum(axis=1));
 
-dest = get_buoy_data(46053)
-E, f = read_data(dest)
-SWH = calc_swh(E,f)
+def get_swh(list):
+    '''
+    params: list
+    returns: dictionary that maps significant wave height data to a buoy number
+    '''
+    locations = {}
 
-SWHflipped = SWH[::-1]
-print(SWHflipped)
+    for buoy in list:
+        dest = get_buoy_data(buoy)
+        E, f = read_data(dest)
+        SWH = calc_swh(E,f)
+
+        SWHflipped = SWH[::-1]
+        print(SWHflipped)
+        locations[buoy] = SWHflipped
+    return locations
+
+if __name__ == "__main__":
+    buoys = [
+            46053, # E. Santa Barbara
+            46054, # W. Santa Barbara
+            46217, # Anacapa Passage
+            46086, # San Clemente Basin
+            46219, # San Nicolas Island
+            ]
+
+    locations = get_swh(buoys)
+    print(type(locations))
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import seaborn as sns
+    sns.set_style("darkgrid")
+    for b, data in locations.items():
+        plt.plot(data)
+        print(b, data)
+    plt.show()
 
 # define period second intervals
 # p = np.array([0,5,7,9,11,13,15,17,19,21,35])
