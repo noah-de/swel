@@ -48,21 +48,24 @@ def read_data(dest):
         f = np.array(frequencies) # f for 'frequency'
     return (E,f)
 
+def calc_swh(E,f):
+    # Average of frequency pairs comparing each frequency with the one after it
+    df = np.diff(f)
+
+    # calculate the energy mid-point
+    Emid = calc_midpoint(E)
+
+    # calculate the frequency mid-point
+    fmid = calc_midpoint(f) # .5*(f[:,:-1] + f[:,1:])
+
+    # significant wave height
+    product = (df*Emid)
+    return 4*np.sqrt(product.sum(axis=1));
+
 dest = get_buoy_data(46053)
 E, f = read_data(dest)
+SWH = calc_swh(E,f)
 
-# Average of frequency pairs comparing each frequency with the one after it
-df = np.diff(f)
-
-# calculate the energy mid-point
-Emid = calc_midpoint(E)
-
-# calculate the frequency mid-point
-fmid = calc_midpoint(f) # .5*(f[:,:-1] + f[:,1:])
-
-# significant wave height
-product = (df*Emid)
-SWH = 4*np.sqrt(product.sum(axis=1));
 SWHflipped = SWH[::-1]
 print(SWHflipped)
 
