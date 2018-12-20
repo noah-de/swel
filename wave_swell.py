@@ -88,6 +88,8 @@ if __name__ == "__main__":
             46217, # Anacapa Passage
             46086, # San Clemente Basin
             46219, # San Nicolas Island
+            46025, # Santa Monica Basin
+            46069, # South Santa Rosa Island
             ]
 
     locations = get_swh(buoys)
