@@ -14,6 +14,15 @@ def get_buoy_data(station = 46054):
     return dest
 
 def read_data(dest):
+    '''Read the data file from NDBC (NOAA) and put it into a usable data
+    structure
+    https://www.ndbc.noaa.gov/data_spec.shtml
+    @params:
+      dest - the location of the file that has been saved to disk
+    @returns:
+      Energy
+      frequency
+    '''
     dates = []
     energies = []
     frequencies = []
