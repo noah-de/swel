@@ -3,8 +3,16 @@ from urllib.request import urlretrieve
 
 
 def calc_midpoint(series):
-    nofirst = series[:, 1:]  # every element in a row, except for the first
-    nolast = series[:, :-1]  # every element in a row, except for the last
+    ''' Calculate the midpoint of a pair-wise numpy array (by row).
+    the resulting series will have one fewer data-points (width)
+    per row.
+
+    :param series: a numpy 2D array
+
+    :returns: a new numpy array containing the midpoint of each row
+    '''
+    nofirst = series[:, 1:]  # every element in a row, not the first
+    nolast = series[:, :-1]  # every element in a row, not the last
     mid = 0.5 * (nolast + nofirst)
     return mid
 
@@ -21,11 +29,10 @@ def read_data(dest):
     Read the data file from NDBC (NOAA) and put it into a usable data
     structure
     https://www.ndbc.noaa.gov/data_spec.shtml
-    @params:
-      dest - the location of the file that has been saved to disk
-    @returns:
-      Energy
-      frequency
+
+    :param dest: the location of the file that has been saved to disk
+
+    :returns: tuple (Energy, frequency)
     """
     dates = []
     energies = []
@@ -105,8 +112,8 @@ if __name__ == "__main__":
 # p = np.array([0,5,7,9,11,13,15,17,19,21,35])
 #
 # # period mid-point
-# notfirst = p[1:]       # every element in a row, except for the first
-# notlast  = p[:-1]      # every element in a row, except for the last
+# notfirst = p[1:]   # every element in a row, except for the first
+# notlast  = p[:-1]  # every element in a row, except for the last
 # pmid = .5*(notfirst + notlast)
 #
 # # shift the focus from frequencies to periods
