@@ -18,7 +18,7 @@ _classifiers = [
 ]
 _description = 'SWEL'
 _download_url = 'http://pypi.python.org/pypi/swel/'
-_requirements = ["numpy", "requests"]
+_requirements = ["numpy"]
 _keywords = ['NOAA', 'NBDC', 'oceanography', 'earth science', 'waves']
 _license = 'Apache License, Version 2.0'
 _long_description = 'A python utility'
