@@ -1,6 +1,10 @@
 import numpy as np
 from urllib.request import urlretrieve
 
+'''
+This is a mockup of running a calculation for multiple buoys
+'''
+
 
 def calc_midpoint(series):
     ''' Calculate the midpoint of a pair-wise numpy array (by row).
@@ -59,9 +63,7 @@ def read_data(dest):
 def calc_swh(E, f):
     df = np.diff(f)
     Emid = calc_midpoint(E)
-    fmid = calc_midpoint(f)
 
-    # significant wave height
     product = df * Emid
     return 4 * np.sqrt(product.sum(axis=1))
 
@@ -79,7 +81,6 @@ def get_swh(list):
         SWH = calc_swh(E, f)
 
         SWHflipped = SWH[::-1]
-        print(SWHflipped)
         locations[buoy] = SWHflipped
     return locations
 
@@ -96,6 +97,7 @@ if __name__ == "__main__":
     ]
 
     locations = get_swh(buoys)
+
     print(type(locations))
 
     import matplotlib.pyplot as plt
