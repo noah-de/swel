@@ -15,6 +15,3 @@ class Swel:
         nolast = series[:, :-1]  # every element in a row, not the last
         mid = 0.5 * (nolast + nofirst)
         return mid
-
-    def flip(self,series):
-        return series[::-1]
