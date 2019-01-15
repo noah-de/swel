@@ -5,7 +5,8 @@ python:
   - "pypy3.5"
 # command to install dependencies
 install:
-  - pip install -r requirements.txt
-  - pip install .
-# command to run tests
-script: pytest
+  - sudo apt-get update
+  - sudo apt-get -y install numpy
+  - python setup.py install
+script:
+  - nosetests -v
