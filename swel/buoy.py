@@ -13,9 +13,11 @@ class Buoy:
         self.E = np.array([])
         self.f = np.array([])
 
-    def get_data(self):
+    def get_data(self, dest = ''):
         url = URL.format(self.buoy)
-        dest = DEST.format(self.buoy)
+        if(dest != ''):
+            dest = DEST.format(self.buoy)
+
         urlretrieve(url,dest)
         self.dest = dest
         return dest
