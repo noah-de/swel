@@ -1,5 +1,8 @@
 import numpy as np
+import logging
 from urllib.request import urlretrieve
+
+logging.basicConfig(level=logging.DEBUG)
 
 '''
 This is a mockup of running a calculation for multiple buoys
@@ -107,7 +110,7 @@ if __name__ == "__main__":
     sns.set_style("darkgrid")
     for b, data in locations.items():
         plt.plot(data)
-        print(b, data)
+        logging.debug(b)
     plt.show()
 
 # define period second intervals
