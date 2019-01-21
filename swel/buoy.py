@@ -5,20 +5,20 @@ from urllib.request import urlretrieve
 URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec"
 DEST = "./data/{}.data_spec"
 
-class Buoy:
 
+class Buoy:
     def __init__(self, buoy):
         self.buoy = buoy
         self.dates = []
         self.E = np.array([])
         self.f = np.array([])
 
-    def get_data(self, dest = ''):
+    def get_data(self, dest=""):
         url = URL.format(self.buoy)
-        if(dest != ''):
+        if dest != "":
             dest = DEST.format(self.buoy)
 
-        urlretrieve(url,dest)
+        urlretrieve(url, dest)
         self.dest = dest
         return dest
 
@@ -27,8 +27,8 @@ class Buoy:
         energies = []
         frequencies = []
 
-        with open(dest) as fp: 
-            for _ in range (3):
+        with open(dest) as fp:
+            for _ in range(3):
                 next(fp)
 
             for l in fp:
