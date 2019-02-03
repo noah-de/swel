@@ -52,7 +52,7 @@ class Buoy:
     def bootstrap(self):
         self.Emid = self.calc_midpoint(self.E)
         self.fmid = self.calc_midpoint(self.f)
-        self.df = np.diff(f)
+        self.df = np.diff(self.f)
 
     def calc_swh(self):
         product = self.df * self.Emid
