@@ -2,7 +2,7 @@ import numpy as np
 import logging
 from urllib.request import urlretrieve
 
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
 
 '''
 This is a mockup of running a calculation for multiple buoys
@@ -112,16 +112,3 @@ if __name__ == "__main__":
         plt.plot(data)
         logging.debug(b)
     plt.show()
-
-# define period second intervals
-# p = np.array([0,5,7,9,11,13,15,17,19,21,35])
-#
-# # period mid-point
-# notfirst = p[1:]   # every element in a row, except for the first
-# notlast  = p[:-1]  # every element in a row, except for the last
-# pmid = .5*(notfirst + notlast)
-#
-# # shift the focus from frequencies to periods
-# pf = 1./fmid
-
-# print("pf:\n",pf)
