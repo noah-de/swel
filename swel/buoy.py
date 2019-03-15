@@ -1,6 +1,7 @@
 import numpy as np
 from urllib.request import urlretrieve
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
 
 
