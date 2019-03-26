@@ -23,7 +23,7 @@ class Buoy:
         if dest is None:
             dest = DEST.format(self.buoy)
 
-        urlretrieve(url, dest)
+        local_filename, headers = urlretrieve(url, dest)
         self.dest = dest
         return dest
 
