@@ -2,22 +2,12 @@ language: python
 python:
   - "3.6"
   - "pypy3.5"
-
-before_install:
-  - if [ ${TRAVIS_PYTHON_VERSION:0:1} == "2" ]; then wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh; else wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi
+before_script:
+  - wget http://repo.continuum.io/miniconda/Miniconda-3.8.3-Linux-x86_64.sh -O miniconda.sh
   - chmod +x miniconda.sh
-  - ./miniconda.sh -b -p /home/travis/mc
-- export PATH=/home/travis/mc/bin:$PATH
-
+  - export PATH=/home/travis/miniconda/bin:$PATH
 install:
-  - conda update --yes conda
-
-  # for debugging...
-  - echo $PATH
-  - which python
-  - conda info
+  - sudo apt-get update
   - python setup.py install
-
-
 script:
-  - nosetests -v
+- nosetests -v
