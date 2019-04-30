@@ -1,6 +1,7 @@
 # _swel_ - wave analysis from spectral data
 [![PyPI](https://img.shields.io/pypi/v/swel.svg?maxAge=2592000?style=plastic)](https://pypi.python.org/pypi/swel)
 [![Build Status](https://travis-ci.org/noah-de/swel.svg?branch=master)](https://travis-ci.org/noah-de/swel)
+[![Coverage Status](https://coveralls.io/repos/github/noah-de/swel/badge.svg?branch=master)](https://coveralls.io/github/noah-de/swel?branch=master)
 
 [Spectral analysis](https://upcommons.upc.edu/bitstream/handle/2099.1/6034/06.pdf?sequence=7) of [real time raw spectral wave information](https://www.ndbc.noaa.gov/data_spec.shtml) from [NOAA](https://www.ndbc.noaa.gov/), calculating trends by plotting spectral moments.
 
