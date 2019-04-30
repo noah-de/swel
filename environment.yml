@@ -1,4 +1,4 @@
-name: devries
+name: swel
 channels:
   - conda-forge
   - defaults
