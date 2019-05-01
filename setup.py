@@ -26,7 +26,7 @@ _name = 'swel'
 _namespaces = []
 _test_suite = 'swel.tests'
 _url = 'https://github.com/noah-de/swel'
-_version = '0.1.2'
+_version = '0.1.4'
 _zip_safe = False
 
 # Setup Metadata
