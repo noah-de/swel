@@ -11,5 +11,19 @@ install:
   - python setup.py install
 script:
 - nosetests  --with-coverage --cover-package=swell -v
+notifications:
+  email: true
+deploy: # Runs on every commit to master branch
+  # test pypi
+  - provider: pypi
+    server: https://test.pypi.org/legacy/ 
+    user: geoncs
+    password:
+      secure: "UWNjFQ6SjXufU7sGtwsmDOCymOKDTrp09K18o+9/Vx01lAXkq/Oy6jZTLl/wPwlBGrxGZ8hJ9n+Yj4ZnDA+SZ824L4hyexXklUyIGCqRAH1hAxMmJxPxWxg22P5eqAQBe1E86TCEjgvQdPMH4gnromBBAcnvcgZNhlrr+bNubv1w/PQ6XfLgXQVJRXerl0/rXaYiT+tmv7PZJFXAoQ7fyBtJXPZx7E2bQmQzUzQU7CcVJ8BZo8Gh+N2UeiEIGi/31r49ByfA0/xq5Hh1XWg2Qvr3tEmjpNFO6NsQ9FD1OWReIYQ6Z76ZPsoq2Ckw3zBRkwRhRzFgTEvTJwC1ZmCJSlI5y0zMRpcGoyg+RQ+qMeQ61KHbfrLcTRjc/S+131jhs+QMlPAeXxVPQeWodb5Nne4ALLVRDSeG9e9qucdKwB/uUfexx8Fliq1EhYVsGzE4TuzjKWcJHj6xyot27jSRcFdY7h9hpxp2nZueMgIf56k0SOuC7XiBlMg5XJB82GDyES/rvV2etILIOEP72aKaOCj4Ehm+H6jndHRRSThkzW+Su+a/VgvoVS4+LFY3iYnMHZS4lVcekRaceSsFDRYx/28GY0JsJOYG51Td4Yk7kIc+HWked7f5Trczs5/nUOkUbsDJPU/Cjk+4eqXl21Q+fg5yrX+V0v3Bcq7FilKQOMU="
+
+    skip_existing: true
+    on:
+        branch: master
+tags: false
 after_success: # Generate coverage reports only on success
   - coveralls
