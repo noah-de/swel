@@ -21,7 +21,7 @@ _download_url = 'http://pypi.python.org/pypi/swel/'
 _requirements = ["numpy"]
 _keywords = ['NOAA', 'NBDC', 'oceanography', 'earth science', 'waves']
 _license = 'Apache License, Version 2.0'
-_long_description = 'A python utility'
+_long_description = 'A python utility to work with raw buoy data from NOAA.'
 _name = 'swel'
 _namespaces = []
 _test_suite = 'swel.tests'
@@ -54,7 +54,7 @@ setup(
     install_requires=_requirements,
     keywords=_keywords,
     license=_license,
-    long_description=_longDescription,
+    long_description=__long_description,
     name=_name,
     namespace_packages=_namespaces,
     packages=find_packages(),
