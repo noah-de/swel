@@ -12,7 +12,7 @@ install:
 script:
 - nosetests  --with-coverage --cover-package=swell -v
 notifications:
-  email: true
+  email: false
 deploy: # Runs on every commit to master branch
   # test pypi
   - provider: pypi
