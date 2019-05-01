@@ -54,7 +54,7 @@ setup(
     install_requires=_requirements,
     keywords=_keywords,
     license=_license,
-    long_description=_long_description,
+    long_description=_longDescription,
     name=_name,
     namespace_packages=_namespaces,
     packages=find_packages(),
