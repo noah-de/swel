@@ -26,7 +26,7 @@ _name = 'swel'
 _namespaces = []
 _test_suite = 'swel.tests'
 _url = 'https://github.com/noah-de/swel'
-_version = '0.1.4'
+_version = '0.1.5'
 _zip_safe = False
 
 # Setup Metadata
@@ -41,8 +41,6 @@ _longDescription = '\n\n'.join([
     _header,
     _read('README.md')
 ])
-open('doc.txt', 'w').write(_longDescription)
-
 
 setup(
     author=_author,
@@ -54,7 +52,7 @@ setup(
     install_requires=_requirements,
     keywords=_keywords,
     license=_license,
-    long_description=__long_description,
+    long_description=_long_description,
     name=_name,
     namespace_packages=_namespaces,
     packages=find_packages(),
