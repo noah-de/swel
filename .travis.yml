@@ -9,6 +9,7 @@ before_script:
 install:
   - sudo apt-get update
   - python setup.py install
+  - pip install coveralls
 script:
 - nosetests  --with-coverage --cover-package=swell -v
 after_success: # Generate coverage reports only on success
