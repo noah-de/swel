@@ -9,7 +9,7 @@ before_script:
 install:
   - sudo apt-get update
   - python setup.py install
-  - pip install coveralls
+  - pip install coveralls pytest-cov
 script:
   #- nosetests  --with-coverage --cover-package=swell -v
   - pytest -v --cov=swel
