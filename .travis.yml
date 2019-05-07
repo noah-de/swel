@@ -12,6 +12,6 @@ install:
   - pip install coveralls pytest-cov
 script:
   #- nosetests  --with-coverage --cover-package=swell -v
-  - pytest -v --cov=swel
+  - pytest -v --cov=swel.buoy
 after_success: # Generate coverage reports only on success
   - coveralls
