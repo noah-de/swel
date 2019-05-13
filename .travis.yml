@@ -7,8 +7,9 @@ matrix:
     env: TOXENV=py36
 install:
   - sudo apt-get update
+  - sudo apt-get -y install python-dev python-pip
   - python setup.py install
-  - pip install coveralls pytest-cov
+  - pip install requests bs4 coveralls
 script:
   - nosetests  --with-coverage --cover-package=swell -v
   #- pytest -v --cov=swel.buoy
