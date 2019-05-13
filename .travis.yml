@@ -11,7 +11,7 @@ install:
   - python setup.py install
   - pip install requests bs4 coveralls
 script:
-  - nosetests  --with-coverage --cover-package=swell -v
+  - nosetests  --with-coverage --cover-package=swel -v
   #- pytest -v --cov=swel.buoy
 after_success: # Generate coverage reports only on success
   - coveralls
