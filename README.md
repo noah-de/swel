@@ -19,5 +19,3 @@ This package was built with some tests:
 or
     
     pytest -v --cov=swel
-    
-The eventual goal is to build with tests and deploy using something like [Travis CI](https://docs.travis-ci.com/user/deployment/pypi/).
