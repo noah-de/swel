@@ -12,9 +12,21 @@ install:
   - pip install requests bs4 coveralls
 script:
   - nosetests  --with-coverage --cover-package=swel -v
-  #- pytest -v --cov=swel.buoy
+  #- pytest -v --cov=swel
 after_success: # Generate coverage reports only on success
   - coveralls
 
 notifications:
   email: true
+
+deploy: # Runs on every commit to master branch
+  # test pypi
+  - provider: pypi
+    server: https://test.pypi.org/legacy/ 
+    user: geoncs
+    password:
+        secure: "mRJulNnxw6FGQOF541d4RoKi5qArUGyqFQmmJ6vz4xGfMB0+2loHdy+yo8tyEIJ8QY8dVM4p1OKyBtSiFcNVDUjwTP4JBhmd9F03RSq429p1VmIrR1RPCXuhCOp736BL7bbOvNCoeXosxpY0FEiy/7qGmwvnnw6PxinTVKKvYFaNxDyoqRzdSuoQa5VXOKCk3BVxZQIjMbTGx9IlOW5swRDoGuYUwDdxeGS31H+JU9xnB0CKUnGM4PE2GA4D7CE/dpUM1/hch9neQcizRaIxLy/Yycj3HfKyzTOTmigx1aWx8RcX+xz5uvZYCZxPtBmC1+LlnFEVYcDh8vG8BqGjIbpVJfYYdU3/F0V9Gl/F9h2Ic3B1xM+32M1/QKuGORUclXt+UhFyjC3RNYb3b/fcNoc2FbUWauV0n2ukRItCyADVVufMppDZsa3dqFi1kDO3VqUO4YgnfSSE5BKKpAttt5E6OmyGZWOrgLQnrq5QW6PhERqQAvnUwmStEKwfa9Ra6OPagxWsicbLOo+mV6hylPJ9m2hLjL8wXJ9WUtu9s4lU1otqIwIQzPGI16AehLj9HHTTrpIioNLgjQb097ecOWMIMXAG7JUnOdI7E4jELXzmudRijm8bVOt/UgcqT2PeypIMg11hQZByTnBpHFXKB+YOckBMSQ0ppHRfTlegxxM="
+    skip_existing: true
+    on:
+        branch: master
+        tags: false
