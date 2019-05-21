@@ -18,15 +18,3 @@ after_success: # Generate coverage reports only on success
 
 notifications:
   email: true
-deploy: # Runs on every commit to master branch
-  # test pypi
-  - provider: pypi
-    server: https://test.pypi.org/legacy/ 
-    user: geoncs
-    password:
-      secure: my/0aods4Eku9ZxuJlRhNlVmrICHFlfuTTgPSBACZ/sjOVIAOAsB6IjVpgXZ3g8O4UrUogLIdUGm9/WHWlIMoQ5/VVI9pt6uBoH0JyccV2YYzkVFRyssdcLkgmWu0pqJar6R6hxhkNXoLCCbaJY1bXEDw2Q7ravgoqEuexZxe0SfK1J5AexfdeTE1SRyO0TmLR+ib2GK2hwge0kdD3xcFn/q5xBo23Seulq7gX7ZrQHc7jHItemnoNOSalIQiqDSxZjEwDdTnTWD23E67xah8Jj5DIgjDSyZLV9ga9tcmi0HpVhvoVjMDwV4R1Mrh1gZkuepd04IJ/StewFJ17wwFj090j2/5tE0J9tvrYoUbUy/MQRKbVlw0cHuhhzh26bLt4n2kJhOfMuVFxzdCsjAhTBcW1ebE50sD/b6ZtElUCrZhBI5wgac+HLhqDyCv2p6+UHf8gi6oET0dwmtod+a7n1DjIL6hZLbMQFSWj00kBknUDD4hCxgfVGVkg8cvyqQKoa85gYCAvglxvZZh/kfaNDQhQ7MaEuO1pERbZsjofMk/iAgaKPsnGJ/7RcIlVsQGOJ+QQ2B65wd/WE3lOCOvHXZUoXEpCjyvuzTGC3qQxPD/NbFSiRK1rFPm1Qs91uPGWTP+CYKjqHsAfO/FjhaK3bnQNauCSOez9o6Yi3Hz0g=
-
-    skip_existing: true
-    on:
-        branch: master
-        tags: false
