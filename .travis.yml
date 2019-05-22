@@ -30,3 +30,14 @@ deploy: # Runs on every commit to master branch
     on:
         branch: master
         tags: false
+
+  # Runs only on tagged commits to master branch
+  - provider: pypi
+    user: geoncs
+    password:
+        secure: "rS40mY+GVsLftKLQ9exSKfqh9RvH23mZmIxSCq1gUna/3mAdAPXLF9je/jzHyxJQuO6WU42U9mRc+opqYe4FUBwxfu4HwsOxd/nOYEcmXADvDOBLwmLl0/63GyjArDTpaI6o8Pbg5qISn6Xkrc5nrwndmjEgWgIOKkWiIWB1ZU8bZgcNqN/6ukJ8ef/mMbThrQYMGQTaZ+ZKtf2sTSrrSTvZ1e10wGG8xUwkoyMgaId409wtqzZDQuRNS4YOiJ/CWya+m7bU9p40S4vn6+068Z0PvfGHo6llEkERpl8yMmHrEzCwtDZTM4iA9cKt/n/gMqTRpq9ifJtosDyHpZRhVhBaALjZkHsHAR8gjbuOqcRzqQzAJJjsHryZVw1EEhL/G4xPQ+U9zDwMD1ibq1Zb60/MhSSNhmc3O15swGWEXanOvgn0ubXsKovU/vzE2DW4U7J5l56KwDM1ZrqT/3AYB84YaOc3S/XLRfHR1PJIVdj5VAukrk+ey7YBK3VObQNOl2I0ImasWvvVmMc/XXhegyrLPoT5BU8MnpNQH5rNB2CPKJBQDV550M9DwmvL2Db6VpGZHHLzrfeMe6sROELEWJzAr/mTVOoFiRxKmLmeRfjkKm9EsN2ISbzRyK2nFHyE+wQ16+wZ50SjyRJL+zqEiDlzBJTnLDXGSoyaq1homRo="
+    distributions: sdist bdist_wheel
+    on:
+        tags: true
+        branch: master
+    skip_existing: true
