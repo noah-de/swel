@@ -48,8 +48,6 @@ class Buoy:
             f = np.array(frequencies)
         return (E, f)
 
-    # The following used to be in it's own class
-    # keep workin on this idea to see if we can make it work here
     def bootstrap(self):
         self.Emid = self.calc_midpoint(self.E)
         self.fmid = self.calc_midpoint(self.f)
