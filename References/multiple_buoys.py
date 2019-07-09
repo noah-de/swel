@@ -92,7 +92,6 @@ if __name__ == "__main__":
     buoys = [
         46053,  # E. Santa Barbara
         46054,  # W. Santa Barbara
-        46217,  # Anacapa Passage
         46086,  # San Clemente Basin
         46219,  # San Nicolas Island
         46025,  # Santa Monica Basin
@@ -104,7 +103,6 @@ if __name__ == "__main__":
     print(type(locations))
 
     import matplotlib.pyplot as plt
-    import numpy as np
     import seaborn as sns
 
     sns.set_style("darkgrid")
