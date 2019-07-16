@@ -26,6 +26,6 @@ setup(
     packages=find_packages(),
     test_suite='swel.tests',
     url='https://github.com/noah-de/swel',
-    version='0.1.5.1',
+    version='0.1.6',
     zip_safe=False,
 )
