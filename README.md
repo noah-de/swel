@@ -1,4 +1,4 @@
-# _swel_ - wave analysis from spectral data
+# swel - wave analysis from spectral data
 [![PyPI](https://img.shields.io/pypi/v/swel.svg?maxAge=2592000?style=plastic)](https://pypi.python.org/pypi/swel)
 [![Build Status](https://travis-ci.org/noah-de/swel.svg?branch=master)](https://travis-ci.org/noah-de/swel)
 [![Coverage Status](https://coveralls.io/repos/github/noah-de/swel/badge.svg?branch=master)](https://coveralls.io/github/noah-de/swel?branch=master)
