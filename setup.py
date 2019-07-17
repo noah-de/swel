@@ -6,17 +6,6 @@ with open("README.md", "r") as fh:
 setup(
     author='Noah Spahn',
     author_email='noah.de@gmail.com',
-    classifiers=[
-    'Environment :: Console',
-    'Intended Audience :: Developers',
-    'Intended Audience :: Information Technology',
-    'Intended Audience :: Science/Research',
-    'Topic :: Scientific/Engineering',
-    'License :: OSI Approved :: Apache Software License',
-    'Operating System :: OS Independent',
-    'Programming Language :: Python',
-    'Topic :: Software Development :: Libraries :: Python Modules',
-],
     description='A python utility to work with raw buoy data from NOAA.',
     include_package_data=True,
     keywords=['NOAA', 'NBDC', 'oceanography', 'earth science', 'waves'],
@@ -28,4 +17,15 @@ setup(
     url='https://github.com/noah-de/swel',
     version='0.1.6',
     zip_safe=False,
+    classifiers=[
+    'Environment :: Console',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Information Technology',
+    'Intended Audience :: Science/Research',
+    'Topic :: Scientific/Engineering',
+    'License :: OSI Approved :: Apache Software License',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+],
 )
