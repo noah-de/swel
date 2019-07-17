@@ -1,0 +1,5 @@
+*.data_spec
+*.png
+*.egg-info
+build
+dist
