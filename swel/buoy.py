@@ -17,6 +17,7 @@ class Buoy:
         self.df = None
         self.E = np.array([])
         self.f = np.array([])
+        self.dest = None
 
     def get_data(self, dest=None):
         logging.debug("calling get_data()")
@@ -25,10 +26,13 @@ class Buoy:
             dest = self.DEST.format(self.buoy)
 
         local_filename, headers = urlretrieve(url, dest)
+        logging.debug("urlretrieve got: {}".format(headers))
+        logging.debug("Saving to {}".format(local_filename))
         self.dest = dest
         return dest
 
-    def read_data(self, dest):
+    @staticmethod
+    def read_data(dest):
         dates = []
         energies = []
         frequencies = []
@@ -51,7 +55,7 @@ class Buoy:
         return (E, f)
 
     def bootstrap(self, E, f):
-        logging.debug(f"Got E: {E.shape}")
+        logging.debug("Got E: {}".format( str(E.shape)))
         self.Emid = self.calc_midpoint(E)
         self.fmid = self.calc_midpoint(f)
         self.df = np.diff(f)
@@ -60,9 +64,10 @@ class Buoy:
         product = self.df * self.Emid
         return 4 * np.sqrt(product.sum(axis=1))
 
-    def calc_midpoint(self, series):
+    @staticmethod
+    def calc_midpoint(series):
         logging.debug("calling calc_midpoint()")
-        logging.debug(f"series: {type(series)}")
+        logging.debug("series: {}".format(type(series)))
         nofirst = series[:, 1:]  # every element in a row, not the first
         nolast = series[:, :-1]  # every element in a row, not the last
         mid = 0.5 * (nolast + nofirst)
