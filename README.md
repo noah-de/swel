@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/noah-de/swel.svg?branch=master)](https://travis-ci.org/noah-de/swel)
 [![Coverage Status](https://coveralls.io/repos/github/noah-de/swel/badge.svg?branch=master)](https://coveralls.io/github/noah-de/swel?branch=master)
 
-[Spectral analysis](https://upcommons.upc.edu/bitstream/handle/2099.1/6034/06.pdf?sequence=7) of [real time raw spectral wave information](https://www.ndbc.noaa.gov/data_spec.shtml) from [NOAA](https://www.ndbc.noaa.gov/), calculating trends by plotting spectral moments.
+[Spectral analysis](https://upcommons.upc.edu/bitstream/handle/2099.1/6034/06.pdf?sequence=7) of [real time raw spectral wave information](https://www.ndbc.noaa.gov/data_spec.shtml) from [NOAA](https://www.ndbc.noaa.gov/), calculating trends by plotting spectral moments. Data definitions are found on the [NOAA data spec page](https://www.ndbc.noaa.gov/data_spec.shtml).
 
 ![Significant Wave Height](https://github.com/noah-de/surf-report/blob/master/References/SWH.png)
 
