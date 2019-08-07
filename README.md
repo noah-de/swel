@@ -19,3 +19,5 @@ This package was built with some tests:
 or
     
     pytest -v --cov=swel
+    
+[![DeepSource](https://static.deepsource.io/deepsource-badge-light.svg)](https://deepsource.io/gh/noah-de/swel/?ref=repository-badge)
