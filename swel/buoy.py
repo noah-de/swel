@@ -4,11 +4,16 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 class Buoy:
     URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec"
     DEST = "./data/{}.data_spec"
 
     def __init__(self, buoy):
+        """ Buoy initialization method
+        accepts a NOAA buoy ID and initializes
+        the data types for calculations"""
+
         logging.debug("initializing buoy")
         self.buoy = buoy
         self.dates = []
@@ -42,7 +47,6 @@ class Buoy:
                 next(fp)
 
             for l in fp:
-                #print(l)
                 dates.append(l.split()[0:5])
                 energies.append([float(e) for e in l.split()[6::2]])
                 freqs = l.split()[7::2]
@@ -55,7 +59,7 @@ class Buoy:
         return (E, f)
 
     def bootstrap(self, E, f):
-        logging.debug("Got E: {}".format( str(E.shape)))
+        logging.debug("Got E: {}".format(str(E.shape)))
         self.Emid = self.calc_midpoint(E)
         self.fmid = self.calc_midpoint(f)
         self.df = np.diff(f)
