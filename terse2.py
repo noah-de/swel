@@ -62,3 +62,4 @@ ax.set(xlabel='hours', ylabel='Wave height (ft)',
        title='Significant Wave height for the last 72 hours')
 ax.legend(bbox_to_anchor=(1.2, 1.05))        # add the legend
 ax.grid()
+plt.show()
