@@ -29,10 +29,8 @@ df = np.diff(f)
 fmid = .5*(f[:, :-1] + f[:, 1:])               # only used to consider
                                                # frequencies by period bins
 Emid = .5*(E[:, :-1] + E[:, 1:])
-
 p = np.array([0, 5, 7, 9, 11, 13]) # arbitrary periods
 pmid = .5*(p[1:] + p[:-1])                   # mid-point resolution
-
 Pf = 1./fmid[0, :]                            # convert from freq. to period
 
 # plotting options
@@ -60,6 +58,6 @@ for idx, _ in enumerate(pmid):               # loop over period mid-point
 plt.gca().invert_xaxis()                     # invert the x axis (since it is looking back in time)
 ax.set(xlabel='hours', ylabel='Wave height (ft)',
        title='Significant Wave height for the last 72 hours')
-ax.legend(bbox_to_anchor=(1.2, 1.05))        # add the legend
+ax.legend(bbox_to_anchor=(1, 1.05))        # add the legend
 ax.grid()
 plt.show()
