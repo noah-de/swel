@@ -44,7 +44,7 @@ f = np.array(frequencies)                    # f for 'frequency'
 df = np.diff(f)
 
 import pandas as pd
-pandE = pd.DataFrame(E)
+pandE = pd.DataFrame(E, index=dates)
 
 fmid = .5*(f[:, :-1] + f[:, 1:])               # only used to consider
                                                # frequencies by period bins
