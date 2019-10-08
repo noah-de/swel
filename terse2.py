@@ -25,6 +25,7 @@ energies = []
 frequencies = []
 lines = raw_data.split("\n")
 
+# Get the data from the file
 for l in lines[:hours]:
     if(len(l) > 100):
 
@@ -41,14 +42,17 @@ for l in lines[:hours]:
         freqs = l.split()[7::2]
         frequencies.append([float(i[1:-1]) for i in freqs])
 
+# Parse the data
 # Create numpy arrays from the arrays
 E = np.array(energies)                       # E for 'Energy'
 f = np.array(frequencies)                    # f for 'frequency'
 df = np.diff(f)
 
+# Pandas experiment
 import pandas as pd
 pan_E = pd.DataFrame(E, index=dates)
 pan_df = pd.DataFrame(df, index=dates)
+#----------------------
 
 fmid = .5*(f[:, :-1] + f[:, 1:])              # only used to consider
                                               # frequencies by period bins
