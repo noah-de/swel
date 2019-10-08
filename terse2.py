@@ -65,7 +65,7 @@ fig.savefig('SWH.png', dpi=100)
 for idx, _ in enumerate(pmid):               # loop over period mid-point
                                              # indexes
                                              # (to make bins: period and neighbor)
-    print("pmid[{}] = {}".format(idx,_))
+    #print("pmid[{}] = {}".format(idx,_))
     period_mask = (Pf > p[idx]) & (Pf <= p[idx+1]) # create a boolean mask of which period data will fit in this bin
     df_subset = df[:, period_mask]           # subset of frequency
     Emid_subset = Emid[:, period_mask]       # subset Energy
@@ -77,7 +77,7 @@ for idx, _ in enumerate(pmid):               # loop over period mid-point
         label = p[idx]
     
     signif = SWH[0:hours]* 3.28              # convert meters to feet
-    smoothed = savgol_filter(signif, 7, 2)   # apply a Savitzky-Golay filter
+    smoothed = savgol_filter(signif, 9, 3)   # apply a Savitzky-Golay filter
     ax.plot(smoothed,label=label)            # add it to the plot 
 
 plt.gca().invert_xaxis()                     # invert the x axis (since it is looking back in time)
