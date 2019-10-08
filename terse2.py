@@ -7,13 +7,15 @@ np.set_printoptions(precision=2)
 import requests
 import arrow
 
-"""
-READ data from NOAA into memory
-"""
-id = '46054'
-URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec".format(id)
+# Define constants
+buoy_id = '46054'
+hours = 100
+periods = [0, 5, 7, 9, 11, 13]
+URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec".format(buoy_id)
 date_format = 'YYYY-MM-DD HH:mm'
 date_pattern = '{}-{}-{} {}:{}'
+
+# READ data from NOAA into memory
 raw_request = requests.get(URL)
 raw_data = raw_request.text
 
@@ -21,8 +23,9 @@ raw_data = raw_request.text
 dates = []
 energies = []
 frequencies = []
+lines = raw_data.split("\n")
 
-for l in raw_data.split("\n"):
+for l in lines[:hours]:
     if(len(l) > 100):
 
         # Parse the date into localized Arrow object
@@ -44,13 +47,14 @@ f = np.array(frequencies)                    # f for 'frequency'
 df = np.diff(f)
 
 import pandas as pd
-pandE = pd.DataFrame(E, index=dates)
+pan_E = pd.DataFrame(E, index=dates)
+pan_df = pd.DataFrame(df, index=dates)
 
-fmid = .5*(f[:, :-1] + f[:, 1:])               # only used to consider
-                                               # frequencies by period bins
+fmid = .5*(f[:, :-1] + f[:, 1:])              # only used to consider
+                                              # frequencies by period bins
 Emid = .5*(E[:, :-1] + E[:, 1:])
-p = np.array([0, 5, 7, 9, 11, 13]) # arbitrary periods
-pmid = .5*(p[1:] + p[:-1])                   # mid-point resolution
+p = np.array(periods) # arbitrary periods
+pmid = .5*(p[1:] + p[:-1])                    # mid-point resolution
 Pf = 1./fmid[0, :]                            # convert from freq. to period
 
 # plotting options
@@ -63,22 +67,22 @@ for idx, _ in enumerate(pmid):               # loop over period mid-point
                                              # (to make bins: period and neighbor)
     print("pmid[{}] = {}".format(idx,_))
     period_mask = (Pf > p[idx]) & (Pf <= p[idx+1]) # create a boolean mask of which period data will fit in this bin
-    df_subset = df[:, period_mask]            # subset of frequency 
-    Emid_subset = Emid[:, period_mask]        # subset Energy
+    df_subset = df[:, period_mask]           # subset of frequency
+    Emid_subset = Emid[:, period_mask]       # subset Energy
     variance = (df_subset*Emid_subset)              
     SWH = (4*np.sqrt(variance.sum(axis=1)))  # 4*(sqrt of variance) rerturns the 'crest to trough' wave height
     if idx == 0:                             # creating a legend
-        label = 'less than 5'
+        label = 'less than {}'.format(str(periods[1]))
     else:
         label = p[idx]
     
-    signif = SWH[0:15]* 3.28                 # convert meters to feet
+    signif = SWH[0:hours]* 3.28              # convert meters to feet
     smoothed = savgol_filter(signif, 7, 2)   # apply a Savitzky-Golay filter
     ax.plot(smoothed,label=label)            # add it to the plot 
 
 plt.gca().invert_xaxis()                     # invert the x axis (since it is looking back in time)
 ax.set(xlabel='hours', ylabel='Wave height (ft)',
-       title='Significant Wave height for the last 72 hours')
+       title='Significant Wave height for the last {} hours'.format(hours))
 ax.legend(bbox_to_anchor=(1, .95))           # add the legend
 ax.grid()
 plt.show()
