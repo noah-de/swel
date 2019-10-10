@@ -69,6 +69,11 @@ fig.savefig('SWH.png', dpi=100)
 for idx, _ in enumerate(pmid):               # loop over period mid-point
                                              # indexes
                                              # (to make bins: period and neighbor)
+
+    #TODO seems like we could utilize a pandas data structure
+    # to track swf from within this loop
+    # then pass make use of the one structure outside of the loop
+
     #print("pmid[{}] = {}".format(idx,_))
     period_mask = (Pf > p[idx]) & (Pf <= p[idx+1]) # create a boolean mask of which period data will fit in this bin
     df_subset = df[:, period_mask]           # subset of frequency
