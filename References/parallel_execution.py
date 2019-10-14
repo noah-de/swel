@@ -5,8 +5,10 @@ import requests
 URL_string = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec"
 
 def get_raw_data(buoy_id):
+    print("getting buoy {}".format(buoy_id))
     URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec".format(buoy_id)
     raw_request = requests.get(URL)
+    raw_data = raw_request.text
     lines = raw_data.split("\n")
     return(lines[:100])
     
@@ -27,4 +29,4 @@ def find_all_lines(ids):
             all_lines.append(lines)
     return all_lines
 
-timeit.timeit(find_all_lines(buoys))
+find_all_lines(buoys)
