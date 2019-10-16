@@ -1,4 +1,3 @@
-import timeit
 from concurrent import futures
 import requests
 
@@ -27,6 +26,7 @@ def find_all_lines(ids):
     with futures.ProcessPoolExecutor() as pool:
         for lines in pool.map(get_raw_data, buoys):
             all_lines.append(lines)
+    print('pool created')
     return all_lines
 
 find_all_lines(buoys)
