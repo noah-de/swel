@@ -7,9 +7,9 @@ name = "pypi"
 pandas = "*"
 arrow = "*"
 matplotlib = "*"
-ipython = "*"
 
 [dev-packages]
+ipython = "*"
 
 [requires]
 python_version = "3.8"
