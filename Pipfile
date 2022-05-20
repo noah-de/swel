@@ -7,6 +7,8 @@ name = "pypi"
 pandas = "*"
 arrow = "*"
 matplotlib = "*"
+scipy = "*"
+requests = "*"
 
 [dev-packages]
 ipython = "*"
