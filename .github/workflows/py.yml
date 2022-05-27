@@ -18,7 +18,7 @@ on:
 #              │ │ │ │ │
 #              * * * * *
     - cron:  '30 5,17 10 * *'
-    jobs:
+jobs:
       build:
         runs-on: ubuntu-latest
     
