@@ -1,11 +1,23 @@
 name: py
-    
-    on:
-      push:
 
-      schedule:
-        - cron: "0 0 * * *" #runs at 00:00 UTC everyday
-    
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+
+
+#              ┌───────────── minute (0 - 59)
+#              │ ┌───────────── hour (0 - 23)
+#              │ │ ┌───────────── day of the month (1 - 31)
+#              │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+#              │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+#              │ │ │ │ │
+#              │ │ │ │ │
+#              │ │ │ │ │
+#              * * * * *
+    - cron:  '30 5,17 10 * *'
     jobs:
       build:
         runs-on: ubuntu-latest
