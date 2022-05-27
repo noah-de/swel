@@ -101,3 +101,7 @@ ax.set(xlabel='hours', ylabel='Wave height (ft)',
 ax.legend(bbox_to_anchor=(1, .95))           # add the legend
 ax.grid()
 plt.savefig("./swel.png")
+
+dir_list = os.listdir(absolute_path)
+ print("Files and directories in '", path, "' :")
+print(dir_list)
