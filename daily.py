@@ -107,5 +107,5 @@ plt.savefig("./swel.png")
 #print(dir_list)
 obj = os.scandir()
 for entry in obj:
-    if entry.is_dir() or entry.is_file():
-        print(entry.name)
+  if entry.is_dir() or entry.is_file():
+    print(entry.name)
