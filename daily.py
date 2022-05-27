@@ -103,5 +103,5 @@ ax.grid()
 plt.savefig("./swel.png")
 
 dir_list = os.listdir(absolute_path)
- print("Files and directories in '", path, "' :")
+print("Files and directories in '", path, "' :")
 print(dir_list)
