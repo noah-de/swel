@@ -7,6 +7,11 @@ np.set_printoptions(precision=2)
 import requests
 import arrow
 
+import os
+absolute_path = os.path.abspath(__file__)
+print("Full path: " + absolute_path)
+print("Directory Path: " + os.path.dirname(absolute_path))
+
 # Define constants
 buoy_id = '46054'
 hours = 100
@@ -16,6 +21,7 @@ date_format = 'YYYY-MM-DD HH:mm'
 date_pattern = '{}-{}-{} {}:{}'
 
 # READ data from NOAA into memory
+print("fetching: ",URL)
 raw_request = requests.get(URL)
 raw_data = raw_request.text
 
