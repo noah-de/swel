@@ -29,7 +29,7 @@ jobs:
             uses: actions/setup-python@v2
             with:
               python-version: 3.8 #install the python needed
-          - name: Install bib2md dependencies
+          - name: Install dependencies
             run: |
               pipenv install
           - name: execute py script # run the run.py to get the latest data
@@ -38,5 +38,5 @@ jobs:
             env:
               key: ${{ secrets.key }} # if run.py requires passwords..etc, set it as secrets
 
-          - name: export index
-            .... # use crosponding script or actions to help export.              
+          #- name: export index
+          # .... # use crosponding script or actions to help export.              
