@@ -102,6 +102,10 @@ ax.legend(bbox_to_anchor=(1, .95))           # add the legend
 ax.grid()
 plt.savefig("./swel.png")
 
-dir_list = os.listdir(absolute_path)
-print("Files and directories in '", path, "' :")
-print(dir_list)
+#dir_list = os.listdir()
+#print("Files and directories in '", path, "' :")
+#print(dir_list)
+obj = os.scandir()
+for entry in obj:
+    if entry.is_dir() or entry.is_file():
+        print(entry.name)
