@@ -1,7 +1,8 @@
 name: surf-check
 on: 
   workflow_dispatch:
-
+  schedule:
+    - cron: "0 5 * * *"
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v8
         with:
-          author_name: Noah
+          author_name: surfwarch
           author_email: noah.de@gmail.com
           message: 'Automated commit message'
           add: 'swel.png  --force'
