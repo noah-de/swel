@@ -30,4 +30,4 @@ jobs:
           author_name: Noah
           author_email: noah.de@gmail.com
           message: 'Automated commit message'
-          add: 'swel.png'
+          add: 'swel.png  --force'
