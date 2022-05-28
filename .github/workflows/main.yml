@@ -1,0 +1,33 @@
+name: surf-check
+on: 
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: 💿 Install pip packages
+        run: pip install pandas arrow matplotlib scipy requests
+      
+      - name: 🚀 Run Automation
+        run:  python daily.py   
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v8
+        with:
+          author_name: Noah
+          author_email: noah.de@gmail.com
+          message: 'Automated commit message'
+          add: 'swel.png'
