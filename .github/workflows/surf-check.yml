@@ -26,7 +26,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v8
         with:
-          author_name: surfwarch
-          author_email: noah.de@gmail.com
-          message: 'Automated commit message'
+          message: update surf check
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
           add: 'swel.png  --force'
