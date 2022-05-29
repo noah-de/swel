@@ -14,7 +14,7 @@ print("Directory Path: " + os.path.dirname(absolute_path))
 
 # Define constants
 buoy_id = '46054'
-hours = 100
+hours = 48
 periods = [0, 5, 7, 9, 11, 13]
 URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec".format(buoy_id)
 date_format = 'YYYY-MM-DD HH:mm'
@@ -87,7 +87,7 @@ for idx, _ in enumerate(pmid):               # loop over period mid-point
     variance = (df_subset*Emid_subset)              
     SWH = (4*np.sqrt(variance.sum(axis=1)))  # 4*(sqrt of variance) rerturns the 'crest to trough' wave height
     if idx == 0:                             # creating a legend
-        label = 'less than {}'.format(str(periods[1]))
+        label = '< {}'.format(str(periods[1]))
     else:
         label = p[idx]
     
@@ -96,8 +96,8 @@ for idx, _ in enumerate(pmid):               # loop over period mid-point
     ax.plot(smoothed,label=label)            # add it to the plot 
 
 plt.gca().invert_xaxis()                     # invert the x axis (since it is looking back in time)
-ax.set(xlabel='hours', ylabel='Wave height (ft)',
-       title='Significant Wave height for the last {} hours'.format(hours))
+ax.set(xlabel='hours', ylabel='Frequency of Wave height (ft)',
+       title='Significant Wave height for the last {} hours (buoy {})'.format(hours,buoy_id))
 ax.legend(bbox_to_anchor=(1, .95))           # add the legend
 ax.grid()
 plt.savefig("./swel.png")
