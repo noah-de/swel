@@ -2,7 +2,7 @@ name: surf-check
 on: 
   workflow_dispatch:
   schedule:
-    - cron: "20/15 * * * *"
+    - cron: "59 * * * *"
 jobs:
   run:
     runs-on: ubuntu-latest
