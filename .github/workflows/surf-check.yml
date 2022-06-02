@@ -2,7 +2,7 @@ name: surf-check
 on: 
   workflow_dispatch:
   schedule:
-    - cron: "*/15 5-18 * * *"
+    - cron: "*/15 * * * *"
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -27,6 +27,6 @@ jobs:
         uses: EndBug/add-and-commit@v8
         with:
           message: update surf check
-          committer_name: GitHub Actions
+          committer_name: Checker
           committer_email: automation@github.com
           add: 'swel.png  --force'
