@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v2
-       with:
-          ref: automation
         with:
+          ref: automation
           fetch-depth: 0
 
       - name: 🐍 Set up Python 3.8
