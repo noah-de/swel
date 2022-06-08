@@ -8,13 +8,13 @@ import requests
 import arrow
 
 import os
-absolute_path = os.path.abspath(__file__)
-print("Full path: " + absolute_path)
-print("Directory Path: " + os.path.dirname(absolute_path))
+#absolute_path = os.path.abspath(__file__)
+#print("Full path: " + absolute_path)
+#print("Directory Path: " + os.path.dirname(absolute_path))
 
 # Define constants
 buoy_id = '46054'
-hours = 48
+hours = 72
 periods = [0, 5, 7, 9, 11, 13]
 URL = "https://www.ndbc.noaa.gov/data/realtime2/{}.data_spec".format(buoy_id)
 date_format = 'YYYY-MM-DD HH:mm'
@@ -96,7 +96,11 @@ for idx, _ in enumerate(pmid):               # loop over period mid-point
     ax.plot(smoothed,label=label)            # add it to the plot 
 
 plt.gca().invert_xaxis()                     # invert the x axis (since it is looking back in time)
-ax.set(xlabel='hours', ylabel='Frequency of Wave height (ft)',
+#year, month,day, hour, minute = dates[0]
+#date = "{0}/{1}/{2} {3}:{4}".format(year,month,day, hour, minute)
+
+ax.set(xlabel='since '+dates[0].humanize() + "   ["+ dates[0].format()+"]", 
+       ylabel='Frequency of Wave height (ft)',
        title='Significant Wave height for the last {} hours (buoy {})'.format(hours,buoy_id))
 ax.legend(bbox_to_anchor=(1, .95))           # add the legend
 ax.grid()
